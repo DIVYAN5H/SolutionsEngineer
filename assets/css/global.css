@@ -1,0 +1,187 @@
+/*=============== FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Manrope&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    --normal-font: 'Manrope', sans-serif;
+    --fancy-font: 'Josefin Sans', sans-serif;
+
+    --large-font-size: 2rem;
+    --normal-font-size: 1.3rem;
+    --small-font-size: 1rem;
+    --tiny-font-size: 0.8rem;
+
+
+    --black: hsl(208, 90%, 4%);
+    --white: hsl(210, 14%, 95%);
+    --accent: hsl(28, 100%, 53%);
+    --gray: hsla(0, 0, 0, 0.4);
+}
+
+/*=============== BASE ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    transition: all 0.3s linear;
+    transition: all 0s linear;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--normal-font);
+    font-size: var(--normal-font-size);
+    color: var(--black);
+    overflow-x: hidden;
+    background: var(--white);
+    padding: 0vw 10vw;
+    cursor: none;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--black);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--black);
+    cursor: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.content {
+    margin-top: 120px;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.fancy-font {
+    font-family: var(--fancy-font);
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1024px;
+    margin: auto;
+}
+
+.section {
+    padding: 4.5rem 0 1rem;
+    height: auto;
+}
+
+.section__height {
+    height: 100vh;
+}
+
+/*=============== button ===============*/
+.button {
+    position: relative;
+    display: inline-flex;
+    padding: 10px 17px;
+    font-size: var(--normal-font-size);
+    background-color: var(--black);
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+
+.button span {
+    position: relative;
+    z-index: 1;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%, -50%);
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: width 0.5s, height 0.5s;
+}
+
+.button:hover::before {
+    width: 250px;
+    height: 250px;
+}
+
+/*=============== scrollbar ===============*/
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* 
+::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+    z-index: 100;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, .5);
+} 
+*/
+
+/*=============== Cursor ===============*/
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    background-color: var(--accent);
+}
+
+.cursor-outline {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: var(--accent);
+    opacity: 0.3;
+}
+
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 1000;
+    pointer-events: none;
+}
