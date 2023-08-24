@@ -30,13 +30,13 @@
 
 <body>
     <!-- uncomment when done -->
-    <!-- <div class="loader flex" id="loader">
+    <div class="loader flex" id="loader">
         <div class="loader-content flex">
             <span class="loader-text"><span class="loader-text-s">S</span></span>
         </div>
     </div>
     <div class="loader-back-a"></div>
-    <div class="loader-back-b"></div> -->
+    <div class="loader-back-b"></div>
 
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
@@ -59,10 +59,11 @@
 
     <div class="content">
 
-        <div class="home hidden" id="home"> <a href="#" class="button"><span>Button</span></a> </div>
-        <div class="more hidden" id="more"></div>
-        <div class="experience hidden" id="experience"></div>
-        <div class="contact" id="contact">
+        <div class="home content-section hidden" id="home"> <a href="#" class="button"><span>Button</span></a> </div>
+        <div class="more content-section hidden" id="More"></div>
+        <div class="experience  content-section hidden" id="Experience"></div>
+
+        <div class="contact content-section hidden" id="Contact">
 
             <section class="formdiv">
 
@@ -72,7 +73,7 @@
                             <box-icon class="contact-detail-label-icon" name='phone' type='solid'></box-icon>
                             Phone
                         </h3>
-                        <p>(123)-234-4567</p>
+                        <p>94664-02133</p>
                     </div>
                     <div class="contact-detail">
                         <h3 class="contact-detail-label flex">
@@ -107,7 +108,7 @@
                         <input type="text" id="message" name="message" autocomplete="off" required><br>
                         <span class="alert" id="messageError"></span><br><br>
 
-                        <button type="submit" class="button" id="contactButton"><span>Send <box-icon type='solid' name='paper-plane'></box-icon></span></button>
+                        <button type="submit" class="button flex" id="contactButton"><span>Send <box-icon type='solid' name='paper-plane'></box-icon></span></button>
 
                     </form>
                 </div>

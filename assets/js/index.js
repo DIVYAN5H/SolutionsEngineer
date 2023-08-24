@@ -1,12 +1,26 @@
 //=============Nav bar animations
 function urlChanged() {
   var currentUrl = window.location.hash.slice(1);
-
+  const childElements = document.querySelectorAll(".content-section");
+  console.log(childElements)
   const navLinks = document.querySelectorAll(".nav-right-link");
 
   navLinks.forEach((navLink) => {
     const navName = navLink.getAttribute("href").substring(1);
     if (navName === currentUrl) {
+
+      childElements.forEach(element => {
+        const elementId = element.id;
+
+        if (elementId == navName){
+          element.classList.remove("hidden")
+        }
+        else{
+          element.classList.add("hidden")
+        }
+
+      });
+
       navLink.classList.remove("animate");
 
       var h = window.innerHeight;
@@ -20,10 +34,12 @@ function urlChanged() {
         transformOrigin: "center",
       });
 
+      //  divToDisplay.classList.remove("hidden");
       navLink.classList.add("backText");
     } else {
       navLink.classList.remove("backText");
 
+      // divToDisplay.classList.add("hidden")
       navLink.classList.add("animate"); // Remove animation class from other links
       gsap.to(navLink, {
         y: 0,
@@ -45,89 +61,89 @@ window.addEventListener("load", urlChanged);
 
 /*=============== Loader animation ===============*/
 // uncomment it when done
-// function shuffleArray(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-//   return array;
-// }
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
-// const lettersArray = Array.from({ length: 26 }, (_, index) =>
-//   String.fromCharCode(97 + index)
-// );
+const lettersArray = Array.from({ length: 26 }, (_, index) =>
+  String.fromCharCode(97 + index)
+);
 
-// var loader = document.querySelector("#loader");
-// var loaderText = document.querySelector(".loader-text");
+var loader = document.querySelector("#loader");
+var loaderText = document.querySelector(".loader-text");
 
-// var firstText = "Solutions Engineer".split("").slice(1);
-// var secondText = "Sahil".slice(1);
+var firstText = "Solutions Engineer".split("").slice(1);
+var secondText = "Sahil".slice(1);
 
-// var randomArray = [];
-// for (var i = 0; i < firstText.length; i++) {
-//   var max = 25;
-//   var min = 5;
-//   var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-//   randomArray.push(randomNumber);
-//   min = randomNumber + 1;
-// }
+var randomArray = [];
+for (var i = 0; i < firstText.length; i++) {
+  var max = 25;
+  var min = 5;
+  var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  randomArray.push(randomNumber);
+  min = randomNumber + 1;
+}
 
-// randomArray.sort(function (a, b) {
-//   return a - b;
-// });
+randomArray.sort(function (a, b) {
+  return a - b;
+});
 
-// for (let i = 0; i < firstText.length; i++) {
-//   var char = firstText[i];
+for (let i = 0; i < firstText.length; i++) {
+  var char = firstText[i];
 
-//   var aToz = shuffleArray(lettersArray);
-//   var span = document.createElement("span");
-//   span.className += "loader-text-spans flex";
+  var aToz = shuffleArray(lettersArray);
+  var span = document.createElement("span");
+  span.className += "loader-text-spans flex";
 
-//   extraTimes = randomArray[i];
-//   if (char == " ") {
-//     extraTimes++;
-//   }
+  extraTimes = randomArray[i];
+  if (char == " ") {
+    extraTimes++;
+  }
 
-//   for (let j = 0; j < extraTimes; j++) {
-//     const extra = aToz[j];
-//     var childSpan = document.createElement("span");
-//     childSpan.innerText = extra;
-//     childSpan.className += "loader-text-span";
-//     span.appendChild(childSpan);
-//   }
-//   var childSpan = document.createElement("span");
-//   childSpan.innerText = char;
-//   childSpan.className += "loader-text-span";
-//   span.appendChild(childSpan);
+  for (let j = 0; j < extraTimes; j++) {
+    const extra = aToz[j];
+    var childSpan = document.createElement("span");
+    childSpan.innerText = extra;
+    childSpan.className += "loader-text-span";
+    span.appendChild(childSpan);
+  }
+  var childSpan = document.createElement("span");
+  childSpan.innerText = char;
+  childSpan.className += "loader-text-span";
+  span.appendChild(childSpan);
 
-//   loaderText.appendChild(span);
-// }
+  loaderText.appendChild(span);
+}
 
-// var loaderTimeline = gsap.timeline()
-// loaderTimeline.from(loaderText.querySelectorAll(".loader-text-spans"), {
-//   y: "100%",
-//   duration: 1,
-//   stagger: 0.2,
-//   ease: "power2",
-// });
-// loaderTimeline.to(document.querySelector('.loader'), {
-//   y: "-100%",
-//   duration: 0.5,
-//   delay: 1,
-//   ease: "power2",
-// })
-// loaderTimeline.to(document.querySelector('.loader-back-a'), {
-//   y: "-100%",
-//   duration: 0.5,
-//   delay: -0.4,
-//   ease: "power2",
-// })
-// loaderTimeline.to(document.querySelector('.loader-back-b'), {
-//   y: "-100%",
-//   duration: 0.2,
-//   delay: -0.1,
-//   ease: "power2",
-// })
+var loaderTimeline = gsap.timeline()
+loaderTimeline.from(loaderText.querySelectorAll(".loader-text-spans"), {
+  y: "100%",
+  duration: 1,
+  stagger: 0.2,
+  ease: "power2",
+});
+loaderTimeline.to(document.querySelector('.loader'), {
+  y: "-100%",
+  duration: 0.5,
+  delay: 1,
+  ease: "power2",
+})
+loaderTimeline.to(document.querySelector('.loader-back-a'), {
+  y: "-100%",
+  duration: 0.5,
+  delay: -0.4,
+  ease: "power2",
+})
+loaderTimeline.to(document.querySelector('.loader-back-b'), {
+  y: "-100%",
+  duration: 0.2,
+  delay: -0.1,
+  ease: "power2",
+})
 /*=============== Custom Cursor ===============*/
 var cursorDot = document.querySelector("[data-cursor-dot]");
 var cursorOutline = document.querySelector("[data-cursor-outline]");
