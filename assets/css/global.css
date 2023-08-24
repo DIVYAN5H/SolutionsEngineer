@@ -1,10 +1,10 @@
 /*=============== FONTS ===============*/
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Manrope&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Manrope&display=swap');
 
 /*=============== VARIABLES CSS ===============*/
 :root {
     --normal-font: 'Manrope', sans-serif;
-    --fancy-font: 'Josefin Sans', sans-serif;
+    --fancy-font: 'Cinzel Decorative', cursive;
 
     --large-font-size: 2rem;
     --normal-font-size: 1.3rem;
@@ -23,8 +23,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    transition: all 0.3s linear;
-    transition: all 0s linear;
+    /* transition: all 0.1s linear;  */
 }
 
 html {
@@ -78,19 +77,19 @@ img {
     align-items: center;
 }
 
-.container {
-    max-width: 1024px;
-    margin: auto;
+.hidden{
+    display: none;
 }
 
-.section {
-    padding: 4.5rem 0 1rem;
-    height: auto;
+.shake-container{
+    position: relative;
 }
 
-.section__height {
-    height: 100vh;
+.shake-container:hover .shake-span-accent{
+    color: var(--accent);
 }
+
+
 
 /*=============== button ===============*/
 .button {
@@ -184,4 +183,5 @@ img {
     border-radius: 50%;
     z-index: 1000;
     pointer-events: none;
+    transition: none;
 }

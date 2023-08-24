@@ -1,24 +1,93 @@
+/*=============== Loader ===============*/
+.loader {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--white);
+}
+
+.loader-content {
+    width: 100vw;
+    height: 20vh;
+    transform: translate(0%,10%);
+}
+
+.loader-text {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    font-size: 4rem;
+    width: 65vw;
+    height: 12rem;
+    overflow: hidden;
+    min-width: max-content;
+}
+
+.loader-text-s {
+    font-size: 10rem;
+    font-family: var(--fancy-font);
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.loader-text-spans {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 4rem;
+    overflow: hidden;
+}
+
+.loader-text-span {
+    display: inline-block;
+    transition: opacity 0.5s, transform 0.5s;
+    width: 3rem;
+    height: 10rem;
+}
+
+.loader-back-a,
+.loader-back-b{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.loader-back-a{
+    z-index: 99;
+    background-color: var(--black);
+}
+
+.loader-back-b{
+    z-index: 98;
+    background-color: var(--accent);
+}
+
 /*=============== Navbar ===============*/
 .navbar {
     width: calc(100% - 18vw);
     justify-content: space-between;
     height: 100px;
     position: fixed;
-    z-index: 100;
+    z-index: 10;
     background-color: var(--white);
 }
 
 .nav-left {
     display: flex;
     font-size: var(--large-font-size);
-    position: relative;
 }
-
-.nav-left:hover .nav-left-s{
-    color: var(--accent);
-}
-
-
 
 .nav-right {
     width: 35%;
@@ -30,7 +99,11 @@
     display: inline-block;
 }
 
-.nav-right-link::before {
+animate {
+    position: relative;
+}
+
+.animate::before {
     content: "";
     position: absolute;
     width: 100%;
@@ -43,11 +116,15 @@
     transition: transform 0.3s, background-color 0.3s;
 }
 
-.nav-right-link:hover {
+.animate:hover {
     color: var(--accent);
 }
 
-.nav-right-link:hover::before {
+.animate:hover::before {
     transform: scaleX(1);
     background-color: var(--accent);
+}
+
+.backText {
+    opacity: 0.25;
 }
