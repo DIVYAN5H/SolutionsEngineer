@@ -23,7 +23,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    /* transition: all 0.1s linear;  */
+    transition: all 0.1s linear; 
 }
 
 html {
@@ -66,6 +66,10 @@ img {
     margin-top: 120px;
 }
 
+button {
+    border: none;
+}
+
 /*=============== REUSABLE CSS CLASSES ===============*/
 .fancy-font {
     font-family: var(--fancy-font);
@@ -77,15 +81,15 @@ img {
     align-items: center;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-.shake-container{
+.shake-container {
     position: relative;
 }
 
-.shake-container:hover .shake-span-accent{
+.shake-container:hover .shake-span-accent {
     color: var(--accent);
 }
 
@@ -102,11 +106,12 @@ img {
     text-decoration: none;
     letter-spacing: 1px;
     overflow: hidden;
+    z-index: 2;
 }
 
 .button span {
     position: relative;
-    z-index: 1;
+    z-index: 3;
 }
 
 .button::before {
@@ -157,6 +162,17 @@ img {
     background: rgba(0, 0, 0, .5);
 } 
 */
+
+/*=============== selection ===============*/
+::-moz-selection {
+    color: var(--white);
+    background: var(--black);
+}
+
+::selection {
+    color: var(--white);
+    background: var(--black);
+}
 
 /*=============== Cursor ===============*/
 .cursor-dot {
