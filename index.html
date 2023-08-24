@@ -30,13 +30,13 @@
 
 <body>
     <!-- uncomment when done -->
-    <div class="loader flex" id="loader">
+    <!-- <div class="loader flex" id="loader">
         <div class="loader-content flex">
             <span class="loader-text"><span class="loader-text-s">S</span></span>
         </div>
     </div>
     <div class="loader-back-a"></div>
-    <div class="loader-back-b"></div>
+    <div class="loader-back-b"></div> -->
 
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
@@ -59,14 +59,66 @@
 
     <div class="content">
 
-        <div class="home" id="home"> <a href="#" class="button"><span>Button</span></a> </div>
+        <div class="home hidden" id="home"> <a href="#" class="button"><span>Button</span></a> </div>
         <div class="more hidden" id="more"></div>
         <div class="experience hidden" id="experience"></div>
-        <div class="contact hidden" id="contact"></div>
+        <div class="contact" id="contact">
+
+            <section class="formdiv">
+
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <h3 class="contact-detail-label flex">
+                            <box-icon class="contact-detail-label-icon" name='phone' type='solid'></box-icon>
+                            Phone
+                        </h3>
+                        <p>(123)-234-4567</p>
+                    </div>
+                    <div class="contact-detail">
+                        <h3 class="contact-detail-label flex">
+                            <box-icon class="contact-detail-label-icon" type='solid' name='envelope'></box-icon> Email
+                        </h3>
+                        <p>test@info.com</p>
+                    </div>
+                    <div class="contact-detail">
+                        <h3 class="contact-detail-label flex">
+                            <box-icon class="contact-detail-label-icon" name='current-location'></box-icon>
+                            Location
+                        </h3>
+                        <p>Bengaluru</p>
+                    </div>
+
+
+                </div>
+
+                <div class="form">
+                    <form name="contact" id="contactForm">
+
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" name="name" autocomplete="off" required><br>
+                        <span class="alert" id="nameError"></span><br><br>
+
+
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email"><br>
+                        <span class="alert" id="emailError"></span><br><br>
+
+                        <label for="message">Message</label><br>
+                        <input type="text" id="message" name="message" autocomplete="off"><br>
+                        <span class="alert" id="messageError"></span><br><br>
+
+                        <button type="submit" class="button" id="contactButton"><span>Send <box-icon type='solid' name='paper-plane'></box-icon></span></button>
+
+                    </form>
+                </div>
+            </section>
+
+        </div>
 
     </div>
 
 </body>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <script src="./assets/js/gsap.min.js"></script>
 <script src="./assets/js/index.js"></script>
 
