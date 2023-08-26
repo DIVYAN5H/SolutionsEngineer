@@ -134,8 +134,10 @@ animate {
 /*=============== Content ===============*/
 .content-section{
     position: absolute;
+    top: 0;
     width: 80vw;
-    height: 70vh;
+    height: 100%;
+    margin-top: 15vh;
     transform: scale(0);
 }
 
@@ -143,13 +145,15 @@ animate {
 /*=============== Contact ===============*/
 
 .formdiv{
-    display: flex;
-    justify-content: space-between;
-    align-items: top;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
     color: black;
-    margin: 5% 10%;
     border-radius: 4px;
-    padding: 40px;
+}
+
+.contact-details, .form{
+    height: 80%;
 }
 
 input[type=text], input[type=email]{

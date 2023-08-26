@@ -2,14 +2,13 @@
 function urlChanged() {
   var currentUrl = window.location.hash.slice(1);
   const childElements = document.querySelectorAll(".content-section");
-  const navLinks = document.querySelectorAll(".nav-right-link");
+  const navLinks = document.querySelectorAll(".navbar a");
 
   navLinks.forEach((navLink) => {
     const navName = navLink.getAttribute("href").substring(1);
     if (navName === currentUrl) {
       childElements.forEach((element) => {
         if (element.id == navName) {
-          console.log(element)
           gsap.to(element, {
             y: 0,
             x: 0,
@@ -30,22 +29,25 @@ function urlChanged() {
 
       navLink.classList.remove("animate");
 
-      var h = window.innerHeight;
-      xDist = { About: 300, More: 230, Experience: 70, Contact: -30 };
+      if (navName != "Home") {
+        var h = window.innerHeight;
+        xDist = { About: 300, More: 230, Experience: 70, Contact: -30 };
 
-      gsap.to(navLink, {
-        y: h - 120,
-        x: xDist[navName],
-        fontWeight: "bold",
-        scale: 10,
-        transformOrigin: "center",
-      });
+        gsap.to(navLink, {
+          y: h - 120,
+          x: xDist[navName],
+          fontWeight: "bold",
+          scale: 10,
+          transformOrigin: "center",
+        });
 
-      navLink.classList.add("backText");
+        navLink.classList.add("backText");
+      }
     } else {
       navLink.classList.remove("backText");
-
-      navLink.classList.add("animate");
+      if (navName != "Home") {
+        navLink.classList.add("animate");
+      }
       gsap.to(navLink, {
         y: 0,
         x: 0,
@@ -207,24 +209,12 @@ const buttons = document.querySelectorAll(".button");
 
 buttons.forEach((button) => {
   button.onmousemove = function (e) {
-    const x = e.pageX - button.offsetLeft;
-    const y = e.pageY - button.offsetTop;
-
+    const boundingRect = button.getBoundingClientRect();
+    const x = e.clientX - boundingRect.left;
+    const y = e.clientY - boundingRect.top;
+    
     button.style.setProperty("--x", x + "px");
     button.style.setProperty("--y", y + "px");
-
-    var sound = new Audio("./assets/sound/whoosh.mp3");
-
-    if (!isSoundPlaying) {
-      sound.volume = 0.1;
-
-      sound.play().then(function () {
-        isSoundPlaying = true;
-        sound.onended = function () {
-          isSoundPlaying = false;
-        };
-      });
-    }
   };
 });
 
