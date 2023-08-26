@@ -63,11 +63,14 @@ img {
 }
 
 .content {
-    margin-top: 120px;
+    height: 80vh;
+    margin-top: 20vh;
+    position: relative;
 }
 
 button {
     border: none;
+    cursor: none;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/

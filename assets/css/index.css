@@ -76,10 +76,13 @@
 
 /*=============== Navbar ===============*/
 .navbar {
-    width: calc(100% - 18vw);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    padding: 0vw 10vw;
     justify-content: space-between;
     height: 100px;
-    position: fixed;
     z-index: 1;
     background-color: var(--white);
 }
@@ -128,6 +131,14 @@ animate {
 .backText {
     opacity: 0.25;
 }
+/*=============== Content ===============*/
+.content-section{
+    position: absolute;
+    width: 80vw;
+    height: 70vh;
+    transform: scale(0);
+}
+
 
 /*=============== Contact ===============*/
 
