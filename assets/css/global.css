@@ -108,12 +108,12 @@ button {
     text-decoration: none;
     letter-spacing: 1px;
     overflow: hidden;
-    z-index: 2;
+    z-index: 5;
 }
 
 .button span {
     position: relative;
-    z-index: 3;
+    z-index: 6;
 }
 
 .button::before {
@@ -127,12 +127,16 @@ button {
     border-radius: 50%;
     background: var(--accent);
     transition: width 0.5s, height 0.5s;
+    z-index: 5;
+
 }
 
 
 .button:hover::before {
     width: 500px;
     height: 500px;
+    z-index: 5;
+
 }
 
 /*=============== scrollbar ===============*/

@@ -100,6 +100,8 @@
 .nav-right-link {
     position: relative;
     display: inline-block;
+    z-index: 1;
+    transition: none; 
 }
 
 animate {
@@ -129,7 +131,9 @@ animate {
 }
 
 .backText {
-    opacity: 0.25;
+    opacity: 0.15;
+    position: relative;
+    pointer-events: none;
 }
 /*=============== Content ===============*/
 .content-section{
@@ -156,7 +160,8 @@ animate {
     height: 80%;
 }
 
-input[type=text], input[type=email]{
+input[type=text], input[type=email], textarea{
+    font-family: var(--normal-font);
     padding: 3px 10px;
     margin: 8px 0;
     width: 25vw;
@@ -164,9 +169,18 @@ input[type=text], input[type=email]{
     box-sizing: border-box;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid hsla(0, 0%, 21%, 0.4);
+    border-bottom: 1px solid var(--gray);
+    background: hsla(0, 0%, 21%, 0.05);
     color: rgb(0, 0, 0);
-    outline:none
+    outline:none;
+    cursor: none;
+}
+textarea{
+    resize: none;
+}
+
+input[type=text]:focus, input[type=email]:focus, textarea:focus{
+    border-bottom: 1px solid var(--accent);
 }
 
 .contact-detail-label{

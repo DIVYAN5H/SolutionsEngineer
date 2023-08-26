@@ -212,7 +212,7 @@ buttons.forEach((button) => {
     const boundingRect = button.getBoundingClientRect();
     const x = e.clientX - boundingRect.left;
     const y = e.clientY - boundingRect.top;
-    
+
     button.style.setProperty("--x", x + "px");
     button.style.setProperty("--y", y + "px");
   };
