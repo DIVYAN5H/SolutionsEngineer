@@ -15,7 +15,7 @@
 .loader-content {
     width: 100vw;
     height: 20vh;
-    transform: translate(0%,10%);
+    transform: translate(0%, 10%);
 }
 
 .loader-text {
@@ -56,7 +56,7 @@
 }
 
 .loader-back-a,
-.loader-back-b{
+.loader-back-b {
     position: absolute;
     top: 0;
     left: 0;
@@ -64,12 +64,12 @@
     height: 100vh;
 }
 
-.loader-back-a{
+.loader-back-a {
     z-index: 99;
     background-color: var(--black);
 }
 
-.loader-back-b{
+.loader-back-b {
     z-index: 98;
     background-color: var(--accent);
 }
@@ -101,7 +101,7 @@
     position: relative;
     display: inline-block;
     z-index: 1;
-    transition: none; 
+    transition: none;
 }
 
 animate {
@@ -135,8 +135,9 @@ animate {
     position: relative;
     pointer-events: none;
 }
+
 /*=============== Content ===============*/
-.content-section{
+.content-section {
     position: absolute;
     top: 0;
     width: 80vw;
@@ -145,10 +146,24 @@ animate {
     transform: scale(0);
 }
 
+.sideText {
+    height: 100%;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.2;
+    font-size: 10rem;
+    left: 0;
+    z-index: 10;
+    transform: translate(-40%,0%) rotate(90deg);
+}
+
 
 /*=============== Contact ===============*/
 
-.formdiv{
+.formdiv {
     height: 100%;
     justify-content: space-around;
     align-items: center;
@@ -156,11 +171,14 @@ animate {
     border-radius: 4px;
 }
 
-.contact-details, .form{
+.contact-details,
+.form {
     height: 80%;
 }
 
-input[type=text], input[type=email], textarea{
+input[type=text],
+input[type=email],
+textarea {
     font-family: var(--normal-font);
     padding: 3px 10px;
     margin: 8px 0;
@@ -172,34 +190,42 @@ input[type=text], input[type=email], textarea{
     border-bottom: 1px solid var(--gray);
     background: hsla(0, 0%, 21%, 0.05);
     color: rgb(0, 0, 0);
-    outline:none;
+    outline: none;
     cursor: none;
 }
-textarea{
+
+textarea {
     resize: none;
 }
 
-input[type=text]:focus, input[type=email]:focus, textarea:focus{
+input[type=text]:focus,
+input[type=email]:focus,
+textarea:focus {
     border-bottom: 1px solid var(--accent);
 }
 
-.contact-detail-label{
+.contact-detail-label {
     justify-content: start;
 }
-.contact-detail-label-icon{
+
+.contact-detail-label-icon {
     margin-right: 10px;
 }
-.contact-detail:hover .contact-detail-label-icon{
+
+.contact-detail:hover .contact-detail-label-icon {
     color: var(--accent);
     fill: var(--accent);
 }
-.contact-detail:hover .contact-detail-label{
+
+.contact-detail:hover .contact-detail-label {
     font-style: italic;
 }
+
 .contact-details p {
     font-size: var(--normal-font-size);
     padding: 10px;
 }
+
 .contact-details h3 {
     font-size: var(--small-font-size);
 }

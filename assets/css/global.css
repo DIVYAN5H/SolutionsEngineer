@@ -84,7 +84,7 @@ button {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .shake-container {
@@ -198,7 +198,8 @@ button {
 }
 
 .cursor-dot,
-.cursor-outline {
+.cursor-outline,
+.cursor-text  {
     position: fixed;
     top: 0;
     left: 0;
@@ -207,4 +208,27 @@ button {
     z-index: 1000;
     pointer-events: none;
     transition: none;
+}
+.cursor-text-spans{
+    position: relative;
+    font-size: var(--small-font-size);
+    user-select: none;
+    animation: rotate 7.5s linear infinite;
+}
+
+.cursor-text-spans span{
+    position: absolute;
+    top: -70px;
+    text-transform: uppercase;
+    display: inline-block;
+    transform-origin: 0 70px;
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(360deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
 }

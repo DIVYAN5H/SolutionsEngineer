@@ -3,6 +3,7 @@ function urlChanged() {
   var currentUrl = window.location.hash.slice(1);
   const childElements = document.querySelectorAll(".content-section");
   const navLinks = document.querySelectorAll(".navbar a");
+  const sideText = document.querySelector('.sideText')
 
   navLinks.forEach((navLink) => {
     const navName = navLink.getAttribute("href").substring(1);
@@ -25,36 +26,20 @@ function urlChanged() {
             ease: "power2",
           });
         }
+
+        sideTextTimeline = gsap.timeline()
+        sideTextTimeline.to(sideText, { left: "-10%", top: "0%", duration: 0.5});
+        setTimeout(() => {
+          sideText.innerText = navName;
+        }, 500);
+        sideTextTimeline.to(sideText, { left: "0%", top: "0%", duration: 0.5});
+
+        navLink.classList.remove("animate");
+        gsap.to(navLink, { opacity: 0.35 });
       });
-
-      navLink.classList.remove("animate");
-
-      if (navName != "Home") {
-        var h = window.innerHeight;
-        xDist = { About: 300, More: 230, Experience: 70, Contact: -30 };
-
-        gsap.to(navLink, {
-          y: h - 120,
-          x: xDist[navName],
-          fontWeight: "bold",
-          scale: 10,
-          transformOrigin: "center",
-        });
-
-        navLink.classList.add("backText");
-      }
-    } else {
-      navLink.classList.remove("backText");
-      if (navName != "Home") {
-        navLink.classList.add("animate");
-      }
-      gsap.to(navLink, {
-        y: 0,
-        x: 0,
-        fontWeight: "normal",
-        scale: 1,
-        transformOrigin: "center",
-      });
+    } else if (navName != "Home") {
+      navLink.classList.add("animate");
+      gsap.to(navLink, { opacity: 1 });
     }
   });
 }
@@ -152,8 +137,32 @@ window.addEventListener("load", urlChanged);
 //   ease: "power2",
 // })
 /*=============== Custom Cursor ===============*/
+function addCursorText(text) {
+  var div = document.querySelector(".cursor-text-spans");
+
+  text = text.split("");
+  div.innerHTML = "";
+
+  text.forEach((t, index) => {
+    const span = document.createElement("span");
+    span.innerText = t;
+
+    const rotation = (360 / text.length) * index;
+    span.style.transform = `rotate(${rotation}deg)`;
+
+    div.appendChild(span);
+  });
+}
+
+function removeCursorText() {
+  var div = document.querySelector(".cursor-text-spans");
+
+  div.innerHTML = "";
+}
+
 var cursorDot = document.querySelector("[data-cursor-dot]");
 var cursorOutline = document.querySelector("[data-cursor-outline]");
+var cursorText = document.querySelector("[data-cursor-text]");
 
 document.addEventListener("mousemove", function (e) {
   const posX = e.clientX;
@@ -168,6 +177,14 @@ document.addEventListener("mousemove", function (e) {
       top: `${posY}px`,
     },
     { duration: 300, fill: "forwards" }
+  );
+
+  cursorText.animate(
+    {
+      left: `${posX}px`,
+      top: `${posY}px`,
+    },
+    { duration: 100, fill: "forwards" }
   );
 });
 
@@ -198,7 +215,7 @@ document
 
 document
   .querySelector(".shake-container")
-  .addEventListener("mouseout", function () {
+  .addEventListener("mouseleave", function () {
     document.querySelectorAll(".shake-span").forEach(function (span) {
       span.style.transform = "rotate(0)";
     });
@@ -215,7 +232,10 @@ buttons.forEach((button) => {
 
     button.style.setProperty("--x", x + "px");
     button.style.setProperty("--y", y + "px");
+
+    button.addEventListener("mouseenter", addCursorText(" send-message "));
   };
+  button.addEventListener("mouseleave", () => removeCursorText());
 });
 
 /*===================== GSAP =================*/
