@@ -3,7 +3,7 @@ function urlChanged() {
   var currentUrl = window.location.hash.slice(1);
   const childElements = document.querySelectorAll(".content-section");
   const navLinks = document.querySelectorAll(".navbar a");
-  const sideText = document.querySelector('.sideText')
+  const sideText = document.querySelector(".sideText");
 
   navLinks.forEach((navLink) => {
     const navName = navLink.getAttribute("href").substring(1);
@@ -27,15 +27,21 @@ function urlChanged() {
           });
         }
 
-        sideTextTimeline = gsap.timeline()
-        sideTextTimeline.to(sideText, { left: "-10%", top: "0%", duration: 0.5});
+        sideTextTimeline = gsap.timeline();
+        sideTextTimeline.to(sideText, {
+          left: "-10%",
+          top: "0%",
+          duration: 0.5,
+        });
         setTimeout(() => {
           sideText.innerText = navName;
         }, 500);
-        sideTextTimeline.to(sideText, { left: "0%", top: "0%", duration: 0.5});
+        sideTextTimeline.to(sideText, { left: "0%", top: "0%", duration: 0.5 });
 
         navLink.classList.remove("animate");
-        gsap.to(navLink, { opacity: 0.35 });
+        if (navName != "Home") {
+          gsap.to(navLink, { opacity: 0.35 });
+        }
       });
     } else if (navName != "Home") {
       navLink.classList.add("animate");
