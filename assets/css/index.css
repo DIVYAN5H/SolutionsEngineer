@@ -169,8 +169,8 @@ animate {
 .timeline-line {
     position: absolute;
     border-radius: 10px;
+    top: 0%;
     width: 5px;
-    top: -120%;
     height: 95%;
     background-color: var(--black);
 }

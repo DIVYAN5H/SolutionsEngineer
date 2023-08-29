@@ -69,8 +69,8 @@ function fillTimeline(){
   aboutStops = document.querySelectorAll(".timeline-stop");
 
   timelines["About"] = gsap.timeline();
-  timelines["About"].to(aboutLine, {
-    top: 0,
+  timelines["About"].from(aboutLine, {
+    top: '-120%',
     duration: 2,
     delay: 1,
     ease: "power2",
