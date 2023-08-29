@@ -23,7 +23,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    transition: all 0.1s linear; 
+    transition: all 0.1s linear;
 }
 
 html {
@@ -116,6 +116,10 @@ button {
     z-index: 6;
 }
 
+.button span .icon {
+    margin-left: 10px;
+}
+
 .button::before {
     content: '';
     position: absolute;
@@ -199,7 +203,7 @@ button {
 
 .cursor-dot,
 .cursor-outline,
-.cursor-text  {
+.cursor-text {
     position: fixed;
     top: 0;
     left: 0;
@@ -209,14 +213,15 @@ button {
     pointer-events: none;
     transition: none;
 }
-.cursor-text-spans{
+
+.cursor-text-spans {
     position: relative;
     font-size: var(--small-font-size);
     user-select: none;
     animation: rotate 7.5s linear infinite;
 }
 
-.cursor-text-spans span{
+.cursor-text-spans span {
     position: absolute;
     top: -70px;
     text-transform: uppercase;
@@ -225,10 +230,11 @@ button {
 }
 
 @keyframes rotate {
-    0%{
+    0% {
         transform: rotate(360deg);
     }
-    100%{
+
+    100% {
         transform: rotate(0deg);
     }
 }

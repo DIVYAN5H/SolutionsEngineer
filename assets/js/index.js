@@ -333,7 +333,15 @@ buttons.forEach((button) => {
     button.style.setProperty("--x", x + "px");
     button.style.setProperty("--y", y + "px");
 
-    button.addEventListener("mouseenter", addCursorText(" send-message "));
+    
+    console.log(button.textContent)
+    if(button.textContent == "Send "){
+      button.addEventListener("mouseenter", addCursorText(" send-message "));
+    }
+    else if(button.textContent == "Resume "){
+      button.addEventListener("mouseenter", addCursorText(" download - download - "));
+    }
+
   };
   button.addEventListener("mouseleave", () => removeCursorText());
 });
