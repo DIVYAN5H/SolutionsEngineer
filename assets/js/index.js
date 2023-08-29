@@ -1,12 +1,40 @@
+//=============timelines
+const timelines = {};
+
+/*===================== GSAP =================*/
+document.addEventListener("DOMContentLoaded", function () {
+  aboutLine = document.querySelector(".timeline-line");
+  timelines["About"] = gsap.timeline();
+  timelines["About"].to(aboutLine, {
+    top: 0,
+    duration: 2,
+    delay: 1,
+    ease: "power2",
+  });
+
+  //======= on load functions========//
+  urlChanged();
+
+  window.addEventListener("hashchange", urlChanged);
+  window.addEventListener("load", urlChanged);
+});
+
 //=============Nav bar animations
+const childElements = document.querySelectorAll(".content-section");
+const navLinks = document.querySelectorAll(".navbar a");
+const sideText = document.querySelector(".sideText");
+
 function urlChanged() {
   var currentUrl = window.location.hash.slice(1);
-  const childElements = document.querySelectorAll(".content-section");
-  const navLinks = document.querySelectorAll(".navbar a");
-  const sideText = document.querySelector(".sideText");
+
+  Object.values(timelines).forEach((timeline) => {
+    timeline.seek(0);
+    timeline.pause();
+  });
 
   navLinks.forEach((navLink) => {
     const navName = navLink.getAttribute("href").substring(1);
+
     if (navName === currentUrl) {
       childElements.forEach((element) => {
         if (element.id == navName) {
@@ -27,6 +55,10 @@ function urlChanged() {
             display: "none",
             ease: "power2",
           });
+        }
+
+        if (timelines[navName]) {
+          timelines[navName].play();
         }
 
         sideTextTimeline = gsap.timeline();
@@ -51,13 +83,6 @@ function urlChanged() {
     }
   });
 }
-//======= on load functions========//
-// Call the function on page load
-urlChanged();
-
-// Attach the function to the "hashchange" and "load" events
-window.addEventListener("hashchange", urlChanged);
-window.addEventListener("load", urlChanged);
 
 /*=============== Loader animation ===============*/
 // uncomment it when done
@@ -246,12 +271,6 @@ buttons.forEach((button) => {
   button.addEventListener("mouseleave", () => removeCursorText());
 });
 
-/*===================== GSAP =================*/
-// const butn = document.querySelector(".button");
-
-// gsap.to(butn, { x: 200,
-// repeat: -1,
-//   yoyo: true })
 /*===================== Conntact info copy =================*/
 const details = document.querySelectorAll(".contact-detail");
 
@@ -297,9 +316,7 @@ document
           oldHtml = document.querySelector("#contactButton").innerHTML;
 
           document.querySelector("#contactButton").innerHTML =
-            `<span>` +
-            data.result +
-            `</span>`;
+            `<span>` + data.result + `</span>`;
           setTimeout(() => {
             document.querySelector("#contactButton").innerHTML = oldHtml;
             alreadySavingData = false;
