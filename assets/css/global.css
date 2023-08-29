@@ -34,7 +34,7 @@ body {
     font-family: var(--normal-font);
     font-size: var(--normal-font-size);
     color: var(--black);
-    /* overflow: hidden; */
+    overflow: hidden;
     height: 100vh;
     width: 100vw;
     background: var(--white);
@@ -126,7 +126,7 @@ button {
     height: 0px;
     border-radius: 50%;
     background: var(--accent);
-    transition: width 0.5s, height 0.5s;
+    transition: width 1s, height 1s;
     z-index: 5;
 
 }

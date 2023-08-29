@@ -15,6 +15,7 @@ function urlChanged() {
             x: 0,
             scale: 1,
             opacity: 1,
+            display: "block",
             ease: "power2",
           });
         } else {
@@ -23,6 +24,7 @@ function urlChanged() {
             x: 0,
             scale: 1.5,
             opacity: 0,
+            display: "none",
             ease: "power2",
           });
         }
@@ -250,33 +252,61 @@ buttons.forEach((button) => {
 // gsap.to(butn, { x: 200,
 // repeat: -1,
 //   yoyo: true })
+/*===================== Conntact info copy =================*/
+const details = document.querySelectorAll(".contact-detail");
+
+details.forEach((detailDiv) => {
+  detailDiv.addEventListener("click", () => {
+    const textToCopy = detailDiv.querySelector("p").textContent;
+    const tempTextArea = document.createElement("textarea");
+
+    tempTextArea.value = textToCopy;
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempTextArea);
+    addCursorText("copied - copied - ");
+  });
+  detailDiv.onmousemove = function (e) {
+    detailDiv.addEventListener("mouseenter", addCursorText("click to copy - "));
+  };
+  detailDiv.addEventListener("mouseleave", () => removeCursorText());
+});
 
 /*===================== Conntact form =================*/
+var alreadySavingData = false;
 document
   .getElementById("contactForm")
   .addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
+    if (!alreadySavingData) {
+      alreadySavingData = true;
 
-    const apiUrl =
-      "https://script.google.com/macros/s/AKfycbx_w-ateKKgzqiwa8HGJtgA6GjGr2OGIMn_A1pgnVR-qJPV9xuFF3RvB4_eNlhrZ2ST/exec";
+      const formData = new FormData(event.target);
 
-    fetch(apiUrl, {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        oldHtml = document.querySelector("#contactButton").innerHTML;
+      const apiUrl =
+        "https://script.google.com/macros/s/AKfycbx_w-ateKKgzqiwa8HGJtgA6GjGr2OGIMn_A1pgnVR-qJPV9xuFF3RvB4_eNlhrZ2ST/exec";
 
-        document.querySelector("#contactButton").innerHTML =
-          `<span>` + data.result + `<box-icon name='tick'></box-icon></span>`;
-        setTimeout(() => {
-          document.querySelector("#contactButton").innerHTML = oldHtml;
-        }, 2000);
+      fetch(apiUrl, {
+        method: "POST",
+        body: formData,
       })
-      .catch((error) => {
-        console.error(error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          oldHtml = document.querySelector("#contactButton").innerHTML;
+
+          document.querySelector("#contactButton").innerHTML =
+            `<span>` +
+            data.result +
+            `</span>`;
+          setTimeout(() => {
+            document.querySelector("#contactButton").innerHTML = oldHtml;
+            alreadySavingData = false;
+          }, 2000);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   });
