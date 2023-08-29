@@ -171,13 +171,13 @@ animate {
     border-radius: 10px;
     width: 5px;
     top: -120%;
-    height: 100%;
+    height: 95%;
     background-color: var(--black);
 }
 
 .timeline-end {
     position: absolute;
-    bottom: -50px;
+    bottom: -20px;
     opacity: 0;
 }
 
@@ -185,7 +185,7 @@ animate {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 100%;
+    height: 80%;
 }
 
 .timeline-stop:nth-child(even) {
