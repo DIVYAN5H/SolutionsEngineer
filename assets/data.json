@@ -1,17 +1,28 @@
 {
-    "timeline": [
-        {
-            "title": "LPU",
-            "description": "I studied at lpu blah blah cse something id degree" 
-        },
-        {
-            "title": "Microfost",
-            "description": "hahaha my friend just enrolled me and i get the cresit lol jk" 
-        },
-        {
-            "title": "whatfix",
-            "description": "fix what? everything is broken trying my best to not get my brain broken" 
-        }
-
-    ]
+  "about": [
+    {
+      "title": "B.Tech. CSE",
+      "subtitle": "LPU",
+      "points": [
+        "I studied at lpu blah blah cse something id degree",
+        "more points goes here like this"
+      ]
+    },
+    {
+      "title": "Solutions Engineer",
+      "subtitle": "Whatfix",
+      "points": [
+        "I studied at lpu blah blah cse something id degree",
+        "more points goes here like this"
+      ]
+    },
+    {
+      "title": "Solutions Engineer",
+      "subtitle": "Whatfix",
+      "points": [
+        "I studied at lpu blah blah cse something id degree",
+        "more points goes here like this"
+      ]
+    }
+  ]
 }

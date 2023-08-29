@@ -1,16 +1,6 @@
-//=============timelines
-const timelines = {};
-
-/*===================== GSAP =================*/
 document.addEventListener("DOMContentLoaded", function () {
-  aboutLine = document.querySelector(".timeline-line");
-  timelines["About"] = gsap.timeline();
-  timelines["About"].to(aboutLine, {
-    top: 0,
-    duration: 2,
-    delay: 1,
-    ease: "power2",
-  });
+  // Fetch your data and fill the timeline stops
+  fetchDataAndFillTimelineStops();
 
   //======= on load functions========//
   urlChanged();
@@ -18,6 +8,83 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("hashchange", urlChanged);
   window.addEventListener("load", urlChanged);
 });
+
+//=============Fetching data
+function fetchDataAndFillTimelineStops() {
+  fetch("assets/data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      fillData(data);
+      fillTimeline();
+    })
+    .catch((error) => {
+      console.error("Error fetching JSON:", error);
+    });
+}
+
+/*===================== adding fetched Data =================*/
+function fillData(data) {
+  //======= about========//
+  aboutDiv = document.querySelector(".timeline-stops");
+
+  data["about"].forEach((stop) => {
+    stopDiv = document.createElement("div");
+    titleDiv = document.createElement("div");
+    subtitleDiv = document.createElement("div");
+    pointsDiv = document.createElement("ul");
+
+    titleDiv.innerText = stop.title;
+    titleDiv.classList = "timeline-stop-title";
+    subtitleDiv.innerText = stop.subtitle;
+    subtitleDiv.classList = "timeline-stop-subtitle";
+
+    stop.points.forEach((point) => {
+      pointDiv = document.createElement("li");
+      pointDiv.innerText = point;
+      pointDiv.classList = "timeline-stop-point";
+
+      pointsDiv.appendChild(pointDiv);
+      pointsDiv.classList = "timeline-stop-points";
+    });
+
+    stopDiv.appendChild(titleDiv);
+    stopDiv.appendChild(subtitleDiv);
+    stopDiv.appendChild(pointsDiv);
+
+    stopDiv.classList = "timeline-stop";
+
+    aboutDiv.appendChild(stopDiv);
+  });
+}
+
+//=============timelines
+const timelines = {};
+
+/*===================== GSAP =================*/
+function fillTimeline(){
+  //======= about========//
+  aboutLine = document.querySelector(".timeline-line");
+  aboutEnd = document.querySelector(".timeline-end");
+
+  aboutStops = document.querySelectorAll(".timeline-stop");
+
+  timelines["About"] = gsap.timeline();
+  timelines["About"].to(aboutLine, {
+    top: 0,
+    duration: 2,
+    delay: 1,
+    ease: "power2",
+  });
+  aboutStops.forEach((aboutStop) => {
+    timelines["About"].from(aboutStop, {
+      left: "50px",
+      opacity: 0,
+    });
+  });
+  timelines["About"].to(aboutEnd, {
+    opacity: 1,
+  });
+}
 
 //=============Nav bar animations
 const childElements = document.querySelectorAll(".content-section");

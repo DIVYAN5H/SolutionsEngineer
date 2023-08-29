@@ -175,6 +175,44 @@ animate {
     background-color: var(--black);
 }
 
+.timeline-end {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0;
+}
+
+.timeline-stops {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.timeline-stop:nth-child(even) {
+    text-align: right;
+    transform: translate(-60%, 0%);
+}
+
+.timeline-stop:nth-child(odd) {
+    text-align: left;
+    transform: translate(60%, 0%);
+}
+
+.timeline-stop-title {}
+
+.timeline-stop-subtitle {
+    font-weight: bold;
+    font-size: var(--small-font-size);
+}
+
+.timeline-stop:hover .timeline-stop-title{
+    color: var(--accent);
+}
+
+.timeline-stop-points {}
+
+.timeline-stop-point {}
+
 
 /*=============== Contact ===============*/
 
